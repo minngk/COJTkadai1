@@ -112,6 +112,8 @@ module mult
    assign x1[14] = s7E;
    assign x1[15] = 0;
 
+   /* make first add souce x1 */
+   
    assign x2[0] = 0;
    assign x2[1] = 0;
    assign x2[2] = 0;
@@ -129,10 +131,8 @@ module mult
    assign x2[14] = c7D;
    assign x2[15] = c7E;
    
+   /* add */
+
    assign x = x1 + x2;
    
 endmodule
-   
-   
-        
-   
