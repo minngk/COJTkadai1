@@ -7,8 +7,6 @@ module mult
 
    wire [7:0]    c0, c1, c2, c3, c4, c5, c6 c7;
 
-   wire 
-   
    makeC makeC_0(a[0], b, c0);
    makeC makeC_1(a[1], b, c1);
    makeC makeC_2(a[2], b, c2);
@@ -18,6 +16,7 @@ module mult
    makeC makeC_6(a[6], b, c6);
    makeC makeC_7(a[7], b, c7);
 
+   /* Wallance tree */
    /* first state */
    
    full_adder fa000(c0[2],c1[1],c2[0],s12,c12);
@@ -36,7 +35,7 @@ module mult
    full_adder fa013(c3[3],c4[2],c5[1],s26,c26);
    full_adder fa014(c3[4],c4[3],c5[2],s27,c27);
    full_adder fa015(c4[4],c5[3],c6[2],s28,c28);
-   full_adder fa016(c5[4],c6[3],c7[2],s29,s29);
+   full_adder fa016(c5[4],c6[3],c7[2],s29,c29);
 
    half_adder ha000(c0[1],c1[0],s11,c11);
    half_adder ha001(c3[1],c4[0],s24,c24);
@@ -46,22 +45,52 @@ module mult
    
    /* second state */
 
-   full_adder fa100(s13,c12,c3[0],s29,s29);
-   full_adder fa101(s14,c13,s24,s29,s29);
-   full_adder fa102(s15,c14,s25,s29,s29);
-   full_adder fa103(s16,c15,s26,s29,s29);
-   full_adder fa104(s17,c16,s27,s29,s29);
-   full_adder fa105(s18,c17,s28,s29,s29);
-   full_adder fa106(s19,c18,s29,s29,s29);
-   full_adder fa107(s1A,c19,s2A,s29,s29);
-   full_adder fa108(s1B,c1A,c7[4],s29,s29);
+   full_adder fa100(s13,c12,c3[0],s43,c43);
+   full_adder fa101(s14,c13,s24,s44,c44);
+   full_adder fa102(s15,c14,s25,s45,c45);
+   full_adder fa103(s16,c15,s26,s46,c46);
+   full_adder fa104(s17,c16,s27,s47,c47);
+   full_adder fa105(s18,c17,s28,s48,c48);
+   full_adder fa106(s19,c18,s29,s49,c49);
+   full_adder fa107(s1A,c19,s2A,s4A,c4A);
+   full_adder fa108(s1B,c1A,c7[4],s4B,c4B);
    
-   full_adder fa109(c27,c7[1],c37,);
+   full_adder fa109(c27,c7[1],s58,c58);
    
-   half_adder ha100(s12,c11,);
-   half_adder ha101(c25,c6[0],);
-   half_adder ha102(c26,s37,);
+   half_adder ha100(s12,c11,s42,c42);
+   half_adder ha101(c25,c6[0],s56,c56);
+   half_adder ha102(c26,s37,s57,c57);
 
+   /* third state */
+   
+   full_adder fa200(s45,c44,c24,s65,c65);
+   full_adder fa201(s46,c45,s56,s66,c66);
+   full_adder fa202(s47,c46,s57,s67,c67);
+   full_adder fa203(s48,c47,s58,s68,c68);
+   full_adder fa204(s49,c48,c28,s69,c69);
+   full_adder fa205(s4A,c49,c29,s6A,c6A);
+   full_adder fa206(s4B,c4A,c2A,s6B,c6B);
+   full_adder fa207(s4C,c4B,c2B,s6C,c6C);
+   
+   half_adder ha200(s43,c42,s63,c63);
+   half_adder ha201(s44,c43,s64,c64);
+
+   /* forth state  */
+   
+   full_adder fa300(s67,c66,c56,s77,c77);
+   full_adder fa301(s68,c67,c57,s78,c78);
+   full_adder fa302(s69,c68,c58,s79,c79);
+   full_adder fa303(s1D,c1C,c6C,s7D,c7D);
+
+   half_adder ha300(s64,c63,s74,c74);
+   half_adder ha301(s65,c63,s75,c75);
+   half_adder ha302(s66,c63,s76,c76);
+   half_adder ha303(s6A,c63,s77,c77);
+   half_adder ha304(s6B,c63,s78,c78);
+   half_adder ha305(s6C,c63,s7A,c7A);
+   half_adder ha306(c7[7],c1D,s7B,c7B);
+
+   
    
    
    
