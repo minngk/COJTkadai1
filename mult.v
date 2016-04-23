@@ -2,11 +2,12 @@ module mult
   (
    input [7:0] a,
    input [7:0] b,
-   output [7:0] x 
+   output [15:0] x 
    );
 
    wire [7:0]    c0, c1, c2, c3, c4, c5, c6 c7;
-
+   wire [15:0]   x1, x2;
+   
    makeC makeC_0(a[0], b, c0);
    makeC makeC_1(a[1], b, c1);
    makeC makeC_2(a[2], b, c2);
@@ -90,13 +91,45 @@ module mult
    half_adder ha305(s6C,c63,s7A,c7A);
    half_adder ha306(c7[7],c1D,s7B,c7B);
 
-   
-   
-   
-   
-   
-   
+   /* make add souce */
 
+   /* make first add souce x1 */
+   
+   assign x1[0] = c0[0];
+   assign x1[1] = s11;
+   assign x1[2] = s42;
+   assign x1[3] = s63;
+   assign x1[4] = s74;
+   assign x1[5] = s75;
+   assign x1[6] = s76;
+   assign x1[7] = s77;
+   assign x1[8] = s78;
+   assign x1[9] = s79;
+   assign x1[10] = s7A;
+   assign x1[11] = s7B;
+   assign x1[12] = s7C;
+   assign x1[13] = s7D;
+   assign x1[14] = s7E;
+   assign x1[15] = 0;
+
+   assign x2[0] = 0;
+   assign x2[1] = 0;
+   assign x2[2] = 0;
+   assign x2[3] = 0;
+   assign x2[4] = 0;
+   assign x2[5] = c74;
+   assign x2[6] = c75;
+   assign x2[7] = c76;
+   assign x2[8] = c77;
+   assign x2[9] = c78;
+   assign x2[10] = c79;
+   assign x2[11] = c7A;
+   assign x2[12] = c7B;
+   assign x2[13] = c7C;
+   assign x2[14] = c7D;
+   assign x2[15] = c7E;
+   
+   assign x = x1 + x2;
    
 endmodule
    
